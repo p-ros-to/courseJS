@@ -55,14 +55,14 @@ const personalMovieDB = {
 
             // personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
             if (gener == '' || gener == null) {
-                console.log('Ввелин не корректные данные или не ввели их вовсе')
+                console.log('Ввелин не корректные данные или не ввели их вовсе');
                 i--;
             } else {
                 personalMovieDB.genres[i - 1] = gener;
             }
         }
         personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр ${i + 1} - это ${item}`)
+            console.log(`Любимый жанр ${i + 1} - это ${item}`);
         });
     }
 };
