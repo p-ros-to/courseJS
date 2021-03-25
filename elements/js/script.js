@@ -24,7 +24,7 @@ const box = document.getElementById('box'),
     });
 
     const div = document.createElement('div'); // существует только внутри js на странице ни как не появится
-    const text = document.createTextNode('любой текст'); // текстовые узлы - элементы без оболочки тега использутеся редко 
+    const text = document.createTextNode('любой текст'); // текстовые узлы - элементы без оболочки тега использутеся не часто 
     
     div.classList.add('black');
     
