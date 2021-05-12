@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
         progress = document.querySelector('.progress'),
         startGame = document.querySelector('.start'),
         win = [
+            [0, 4, 8],
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
             [0, 3, 6],
             [1, 4, 7],
             [2, 5, 8],
-            [0, 4, 8],
             [2, 4, 6]
         ];
     let count = 0,
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function hide() {
         field.classList.add('hide');
     }
-
 
 
     startGame.addEventListener('click', (e) => {
@@ -80,12 +79,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
     function checkWinner() {
         for (let i = 0; i < win.length; i++) {
-            if(cells[win[i][0]].classList.contains('x') &&
+            if(count == 9) {
+                if(cells[win[i][0]].classList.contains('x') &&
+                cells[win[i][1]].classList.contains('x') &&
+                cells[win[i][2]].classList.contains('x')) {
+                    setTimeout(() => {
+                        cells[win[i][0]].classList.contains('x');
+                        cells[win[i][1]].classList.contains('x');
+                        cells[win[i][2]].classList.contains('x');
+                        progress.innerHTML = 'Выиграл Х';
+                        hide();
+                        startGame.classList.remove('hide');
+                        clearField();
+                    }, 1250);
+                }
+                else if(cells[win[i][0]].classList.contains('o') &&
+                cells[win[i][1]].classList.contains('o') &&
+                cells[win[i][2]].classList.contains('o')) {
+                    setTimeout(() => {
+                        cells[win[i][0]].classList.contains('o');
+                        cells[win[i][1]].classList.contains('o');
+                        cells[win[i][2]].classList.contains('o');
+                        progress.innerHTML = 'Выиграл O';
+                        hide();
+                        startGame.classList.remove('hide');
+                        clearField();
+                    }, 1250);
+                }
+                else {
+                    setTimeout(() => {
+                        progress.innerHTML = 'Ничья';
+                        hide();
+                        startGame.classList.remove('hide');
+                        clearField();
+                    }, 1250);
+                }
+            }
+            else if(cells[win[i][0]].classList.contains('x') &&
             cells[win[i][1]].classList.contains('x') &&
-            cells[win[i][2]].classList.contains('x')) {
+            cells[win[i][2]].classList.contains('x') && count !== 9) {
                 setTimeout(() => {
                     cells[win[i][0]].classList.contains('x');
                     cells[win[i][1]].classList.contains('x');
@@ -98,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else if(cells[win[i][0]].classList.contains('o') &&
             cells[win[i][1]].classList.contains('o') &&
-            cells[win[i][2]].classList.contains('o')) {
+            cells[win[i][2]].classList.contains('o') && count !== 9) {
                 setTimeout(() => {
                     cells[win[i][0]].classList.contains('o');
                     cells[win[i][1]].classList.contains('o');
@@ -109,17 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearField();
                 }, 1250);
             }
-            else if(count == 9) {
-                setTimeout(() => {
-                    progress.innerHTML = 'Ничья';
-                    hide();
-                    startGame.classList.remove('hide');
-                    clearField();
-                }, 1250);
-            }
         }
     }
-
 
 
     function randomMove() {
