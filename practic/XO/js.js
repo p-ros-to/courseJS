@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             cheked();
-            
         }
     });
 
@@ -84,27 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(cells[win[i][0]].classList.contains('x') &&
                 cells[win[i][1]].classList.contains('x') &&
                 cells[win[i][2]].classList.contains('x')) {
-                    setTimeout(() => {
+                    return setTimeout(() => {
                         console.log('x');
                         progress.innerHTML = 'Выиграл Х';
                         hide();
                         startGame.classList.remove('hide');
                         clearField();
                     }, 1250);
-                    break;
                 }
 
                 else if(cells[win[i][0]].classList.contains('o') &&
                 cells[win[i][1]].classList.contains('o') &&
                 cells[win[i][2]].classList.contains('o')) {
-                    setTimeout(() => {
+                    return setTimeout(() => {
                         console.log('o');
                         progress.innerHTML = 'Выиграл O';
                         hide();
                         startGame.classList.remove('hide');
                         clearField();
                     }, 1250);
-                    break;
                 }
                 else {
                     setTimeout(() => {
@@ -113,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         startGame.classList.remove('hide');
                         clearField();
                     }, 1250);
-                    break;
                 }
             }
             else if(cells[win[i][0]].classList.contains('x') &&
